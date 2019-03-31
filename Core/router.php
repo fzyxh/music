@@ -4,27 +4,32 @@
  */
 define('MODULE_DIR', APP_PATH . 'Controller/');
 define('VIEW_DIR', APP_PATH . 'View/');
-$root = $_SERVER['SCRIPT_NAME'];
-$SE_STRING = $_SERVER['REQUEST_URI'];
-$root = str_replace('index.php', '', $root);
-if($root != "/"){
-    $SE_STRING = str_replace($root, '', $SE_STRING);
-}else{
-    $SE_STRING = substr($SE_STRING,1);
+$_DocumentPath = $_SERVER['DOCUMENT_ROOT'];
+$_RequestUri = $_SERVER['REQUEST_URI'];
+$_UrlPath = $_RequestUri;
+$_FilePath = __FILE__;
+$_AppPath = str_replace($_DocumentPath, '', $_FilePath);
+$_AppPathArr = explode(DIRECTORY_SEPARATOR, $_AppPath);
+for ($i = 0; $i < count($_AppPathArr); $i++) {
+    $p = $_AppPathArr[$i];
+    if ($p) {
+        $_UrlPath = preg_replace('/^\/' . $p . '\//', '/', $_UrlPath, 1);
+    }
 }
+$_UrlPath = preg_replace('/^\//', '', $_UrlPath, 1);
 if (isset($_SERVER['QUERY_STRING'])) {
-    $SE_STRING = str_replace('?' . $_SERVER['QUERY_STRING'], '', $SE_STRING);
+    $_UrlPath = str_replace('?' . $_SERVER['QUERY_STRING'], '', $_UrlPath);
 }
-if (strpos($SE_STRING, 'index.php') === 0) {
-    $SE_STRING = str_replace('index.php', '', $SE_STRING);
+if (substr($_UrlPath, 0, 10) === "index.php/") {
+    $_UrlPath = substr($_UrlPath, 10);
 }
 $ary_url = ['controller' => 'home', 'method' => 'index', 'pramers' => []];
-$ary_se = explode('/', $SE_STRING);
+$ary_se = explode('/', $_UrlPath);
 $se_count = count($ary_se);
 //路由控制
 if ($se_count === 0 || $se_count === 1) {
-    if ($SE_STRING !== '') {
-        $ary_url['controller'] = basename($SE_STRING, ".php");
+    if ($_UrlPath !== '') {
+        $ary_url['controller'] = basename($_UrlPath, ".php");
     }
     $module_name = $ary_url['controller'];
     $module_file = VIEW_DIR . $module_name . '.php';
