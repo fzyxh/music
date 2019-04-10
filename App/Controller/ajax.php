@@ -240,27 +240,27 @@ class ajax {
                     }
                     $temp['lrc'] = SITE_URL . 'lrc/get/type/qq/mid/' . $value['songmid'];
                     if ($value['sizeape'] != "0") {
-                        $temp['url_ape'] = 'http://streamoc.music.tc.qq.com/A000' . $value['media_mid'] . '.ape?guid=0&uin=0&fromtag=8';
+                        $temp['url_ape'] = 'http://mobileoc.music.tc.qq.com/A000' . $value['media_mid'] . '.ape?guid=0&uin=0&fromtag=8';
                         $temp['url'] = $temp['url_ape'];
                     }
                     if ($value['sizeflac'] != "0") {
-                        $temp['url_flac'] = 'http://streamoc.music.tc.qq.com/F000' . $value['media_mid'] . '.flac?guid=0&uin=0&fromtag=53';
+                        $temp['url_flac'] = 'http://mobileoc.music.tc.qq.com/F000' . $value['media_mid'] . '.flac?guid=0&uin=0&fromtag=53';
                         $temp['url'] = $temp['url_flac'];
                     }
                     if ($value['size320'] != "0") {
-                        $temp['url_320'] = 'http://streamoc.music.tc.qq.com/M800' . $value['media_mid'] . '.mp3?guid=0&uin=0&fromtag=8';
+                        $temp['url_320'] = 'http://mobileoc.music.tc.qq.com/M800' . $value['media_mid'] . '.mp3?guid=0&uin=0&fromtag=8';
                         $temp['url'] = $temp['url_320'];
                     }
                     if ($value['size128'] != "0") {
-                        $temp['url_128'] = 'http://streamoc.music.tc.qq.com/M500' . $value['media_mid'] . '.mp3?guid=0&uin=0&fromtag=53';
+                        $temp['url_128'] = 'http://mobileoc.music.tc.qq.com/M500' . $value['media_mid'] . '.mp3?guid=0&uin=0&fromtag=53';
                         $temp['url'] = $temp['url_128'];
                     }
                     if ($value['sizeogg'] != "0") {
-                        $temp['url_m4a'] = 'http://streamoc.music.tc.qq.com/C400' . $value['media_mid'] . '.m4a?guid=0&uin=0&fromtag=53';
+                        $temp['url_m4a'] = 'http://mobileoc.music.tc.qq.com/C400' . $value['media_mid'] . '.m4a?guid=0&uin=0&fromtag=53';
                         $temp['url'] = $temp['url_m4a'];
                     }
                     if (!isset($temp['url'])) {
-                        $temp['url_m4a'] = 'http://streamoc.music.tc.qq.com/C400' . $value['media_mid'] . '.m4a?guid=0&uin=0&fromtag=53';
+                        $temp['url_m4a'] = 'http://mobileoc.music.tc.qq.com/C400' . $value['media_mid'] . '.m4a?guid=0&uin=0&fromtag=53';
                         $temp['url'] = $temp['url_m4a'];
                     }
                     array_push($List['list'], $temp);
@@ -299,27 +299,27 @@ class ajax {
                 }
                 $temp['lrc'] = SITE_URL . 'lrc/get/type/qq/mid/' . $Data['mid'];
                 if ($Data['file']['size_ape'] != "0") {
-                    $temp['url_ape'] = 'http://streamoc.music.tc.qq.com/A000' . $Data['file']['media_mid'] . '.ape?guid=0&uin=0&fromtag=8';
+                    $temp['url_ape'] = 'http://mobileoc.music.tc.qq.com/A000' . $Data['file']['media_mid'] . '.ape?guid=0&uin=0&fromtag=8';
                     $temp['url'] = $temp['url_ape'];
                 }
                 if ($Data['file']['size_flac'] != "0") {
-                    $temp['url_flac'] = 'http://streamoc.music.tc.qq.com/F000' . $Data['file']['media_mid'] . '.flac?guid=0&uin=0&fromtag=53';
+                    $temp['url_flac'] = 'http://mobileoc.music.tc.qq.com/F000' . $Data['file']['media_mid'] . '.flac?guid=0&uin=0&fromtag=53';
                     $temp['url'] = $temp['url_flac'];
                 }
                 if ($Data['file']['size_320mp3'] != "0") {
-                    $temp['url_320'] = 'http://streamoc.music.tc.qq.com/M800' . $Data['file']['media_mid'] . '.mp3?guid=0&uin=0&fromtag=8';
+                    $temp['url_320'] = 'http://mobileoc.music.tc.qq.com/M800' . $Data['file']['media_mid'] . '.mp3?guid=0&uin=0&fromtag=8';
                     $temp['url'] = $temp['url_320'];
                 }
                 if ($Data['file']['size_128mp3'] != "0") {
-                    $temp['url_128'] = 'http://streamoc.music.tc.qq.com/M500' . $Data['file']['media_mid'] . '.mp3?guid=0&uin=0&fromtag=53';
+                    $temp['url_128'] = 'http://mobileoc.music.tc.qq.com/M500' . $Data['file']['media_mid'] . '.mp3?guid=0&uin=0&fromtag=53';
                     $temp['url'] = $temp['url_128'];
                 }
                 if ($Data['file']['size_192ogg'] != "0") {
-                    $temp['url_m4a'] = 'http://streamoc.music.tc.qq.com/C400' . $Data['file']['media_mid'] . '.m4a?guid=0&uin=0&fromtag=53';
+                    $temp['url_m4a'] = 'http://mobileoc.music.tc.qq.com/C400' . $Data['file']['media_mid'] . '.m4a?guid=0&uin=0&fromtag=53';
                     $temp['url'] = $temp['url_m4a'];
                 }
                 if (!$temp['url']) {
-                    $temp['url_m4a'] = 'http://streamoc.music.tc.qq.com/C400' . $value['media_mid'] . '.m4a?guid=0&uin=0&fromtag=53';
+                    $temp['url_m4a'] = 'http://mobileoc.music.tc.qq.com/C400' . $value['media_mid'] . '.m4a?guid=0&uin=0&fromtag=53';
                     $temp['url'] = $temp['url_m4a'];
                 }
                 array_push($List['list'], $temp);
@@ -354,23 +354,23 @@ class ajax {
                     }
                     $temp['lrc'] = SITE_URL . 'lrc/get/type/qq/mid/' . $value['songmid'];
                     if ($value['sizeape'] != "0") {
-                        $temp['url_ape'] = 'http://streamoc.music.tc.qq.com/A000' . $value['strMediaMid'] . '.ape?guid=0&uin=0&fromtag=8';
+                        $temp['url_ape'] = 'http://mobileoc.music.tc.qq.com/A000' . $value['strMediaMid'] . '.ape?guid=0&uin=0&fromtag=8';
                         $temp['url'] = $temp['url_ape'];
                     }
                     if ($value['sizeflac'] != "0") {
-                        $temp['url_flac'] = 'http://streamoc.music.tc.qq.com/F000' . $value['strMediaMid'] . '.flac?guid=0&uin=0&fromtag=53';
+                        $temp['url_flac'] = 'http://mobileoc.music.tc.qq.com/F000' . $value['strMediaMid'] . '.flac?guid=0&uin=0&fromtag=53';
                         $temp['url'] = $temp['url_flac'];
                     }
                     if ($value['size320'] != "0") {
-                        $temp['url_320'] = 'http://streamoc.music.tc.qq.com/M800' . $value['strMediaMid'] . '.mp3?guid=0&uin=0&fromtag=8';
+                        $temp['url_320'] = 'http://mobileoc.music.tc.qq.com/M800' . $value['strMediaMid'] . '.mp3?guid=0&uin=0&fromtag=8';
                         $temp['url'] = $temp['url_320'];
                     }
                     if ($value['size128'] != "0") {
-                        $temp['url_128'] = 'http://streamoc.music.tc.qq.com/M500' . $value['strMediaMid'] . '.mp3?guid=0&uin=0&fromtag=53';
+                        $temp['url_128'] = 'http://mobileoc.music.tc.qq.com/M500' . $value['strMediaMid'] . '.mp3?guid=0&uin=0&fromtag=53';
                         $temp['url'] = $temp['url_128'];
                     }
                     if ($value['sizeogg'] != "0") {
-                        $temp['url_m4a'] = 'http://streamoc.music.tc.qq.com/C400' . $value['strMediaMid'] . '.m4a?guid=0&uin=0&fromtag=53';
+                        $temp['url_m4a'] = 'http://mobileoc.music.tc.qq.com/C400' . $value['strMediaMid'] . '.m4a?guid=0&uin=0&fromtag=53';
                         $temp['url'] = $temp['url_m4a'];
                     }
                     array_push($List['list'], $temp);
@@ -411,23 +411,23 @@ class ajax {
                     }
                     $temp['lrc'] = SITE_URL . 'lrc/get/type/qq/mid/' . $value['songmid'];
                     if ($value['sizeape'] != "0") {
-                        $temp['url_ape'] = 'http://streamoc.music.tc.qq.com/A000' . $value['strMediaMid'] . '.ape?guid=0&uin=0&fromtag=8';
+                        $temp['url_ape'] = 'http://mobileoc.music.tc.qq.com/A000' . $value['strMediaMid'] . '.ape?guid=0&uin=0&fromtag=8';
                         $temp['url'] = $temp['url_ape'];
                     }
                     if ($value['sizeflac'] != "0") {
-                        $temp['url_flac'] = 'http://streamoc.music.tc.qq.com/F000' . $value['strMediaMid'] . '.flac?guid=0&uin=0&fromtag=53';
+                        $temp['url_flac'] = 'http://mobileoc.music.tc.qq.com/F000' . $value['strMediaMid'] . '.flac?guid=0&uin=0&fromtag=53';
                         $temp['url'] = $temp['url_flac'];
                     }
                     if ($value['size320'] != "0") {
-                        $temp['url_320'] = 'http://streamoc.music.tc.qq.com/M800' . $value['strMediaMid'] . '.mp3?guid=0&uin=0&fromtag=8';
+                        $temp['url_320'] = 'http://mobileoc.music.tc.qq.com/M800' . $value['strMediaMid'] . '.mp3?guid=0&uin=0&fromtag=8';
                         $temp['url'] = $temp['url_320'];
                     }
                     if ($value['size128'] != "0") {
-                        $temp['url_128'] = 'http://streamoc.music.tc.qq.com/M500' . $value['strMediaMid'] . '.mp3?guid=0&uin=0&fromtag=53';
+                        $temp['url_128'] = 'http://mobileoc.music.tc.qq.com/M500' . $value['strMediaMid'] . '.mp3?guid=0&uin=0&fromtag=53';
                         $temp['url'] = $temp['url_128'];
                     }
                     if ($value['sizeogg'] != "0") {
-                        $temp['url_m4a'] = 'http://streamoc.music.tc.qq.com/C400' . $value['strMediaMid'] . '.m4a?guid=0&uin=0&fromtag=53';
+                        $temp['url_m4a'] = 'http://mobileoc.music.tc.qq.com/C400' . $value['strMediaMid'] . '.m4a?guid=0&uin=0&fromtag=53';
                         $temp['url'] = $temp['url_m4a'];
                     }
                     array_push($List['list'], $temp);
@@ -464,23 +464,23 @@ class ajax {
                     }
                     $temp['lrc'] = SITE_URL . 'lrc/get/type/qq/mid/' . $value['songmid'];
                     if ($value['sizeape'] != "0") {
-                        $temp['url_ape'] = 'http://streamoc.music.tc.qq.com/A000' . $value['strMediaMid'] . '.ape?guid=0&uin=0&fromtag=8';
+                        $temp['url_ape'] = 'http://mobileoc.music.tc.qq.com/A000' . $value['strMediaMid'] . '.ape?guid=0&uin=0&fromtag=8';
                         $temp['url'] = $temp['url_ape'];
                     }
                     if ($value['sizeflac'] != "0") {
-                        $temp['url_flac'] = 'http://streamoc.music.tc.qq.com/F000' . $value['strMediaMid'] . '.flac?guid=0&uin=0&fromtag=53';
+                        $temp['url_flac'] = 'http://mobileoc.music.tc.qq.com/F000' . $value['strMediaMid'] . '.flac?guid=0&uin=0&fromtag=53';
                         $temp['url'] = $temp['url_flac'];
                     }
                     if ($value['size320'] != "0") {
-                        $temp['url_320'] = 'http://streamoc.music.tc.qq.com/M800' . $value['strMediaMid'] . '.mp3?guid=0&uin=0&fromtag=8';
+                        $temp['url_320'] = 'http://mobileoc.music.tc.qq.com/M800' . $value['strMediaMid'] . '.mp3?guid=0&uin=0&fromtag=8';
                         $temp['url'] = $temp['url_320'];
                     }
                     if ($value['size128'] != "0") {
-                        $temp['url_128'] = 'http://streamoc.music.tc.qq.com/M500' . $value['strMediaMid'] . '.mp3?guid=0&uin=0&fromtag=53';
+                        $temp['url_128'] = 'http://mobileoc.music.tc.qq.com/M500' . $value['strMediaMid'] . '.mp3?guid=0&uin=0&fromtag=53';
                         $temp['url'] = $temp['url_128'];
                     }
                     if ($value['sizeogg'] != "0") {
-                        $temp['url_m4a'] = 'http://streamoc.music.tc.qq.com/C400' . $value['strMediaMid'] . '.m4a?guid=0&uin=0&fromtag=53';
+                        $temp['url_m4a'] = 'http://mobileoc.music.tc.qq.com/C400' . $value['strMediaMid'] . '.m4a?guid=0&uin=0&fromtag=53';
                         $temp['url'] = $temp['url_m4a'];
                     }
                     array_push($List['list'], $temp);
@@ -516,23 +516,23 @@ class ajax {
                     }
                     $temp['lrc'] = SITE_URL . 'lrc/get/type/qq/mid/' . $value['songmid'];
                     if ($value['sizeape'] != "0") {
-                        $temp['url_ape'] = 'http://streamoc.music.tc.qq.com/A000' . $value['strMediaMid'] . '.ape?guid=0&uin=0&fromtag=8';
+                        $temp['url_ape'] = 'http://mobileoc.music.tc.qq.com/A000' . $value['strMediaMid'] . '.ape?guid=0&uin=0&fromtag=8';
                         $temp['url'] = $temp['url_ape'];
                     }
                     if ($value['sizeflac'] != "0") {
-                        $temp['url_flac'] = 'http://streamoc.music.tc.qq.com/F000' . $value['strMediaMid'] . '.flac?guid=0&uin=0&fromtag=53';
+                        $temp['url_flac'] = 'http://mobileoc.music.tc.qq.com/F000' . $value['strMediaMid'] . '.flac?guid=0&uin=0&fromtag=53';
                         $temp['url'] = $temp['url_flac'];
                     }
                     if ($value['size320'] != "0") {
-                        $temp['url_320'] = 'http://streamoc.music.tc.qq.com/M800' . $value['strMediaMid'] . '.mp3?guid=0&uin=0&fromtag=8';
+                        $temp['url_320'] = 'http://mobileoc.music.tc.qq.com/M800' . $value['strMediaMid'] . '.mp3?guid=0&uin=0&fromtag=8';
                         $temp['url'] = $temp['url_320'];
                     }
                     if ($value['size128'] != "0") {
-                        $temp['url_128'] = 'http://streamoc.music.tc.qq.com/M500' . $value['strMediaMid'] . '.mp3?guid=0&uin=0&fromtag=53';
+                        $temp['url_128'] = 'http://mobileoc.music.tc.qq.com/M500' . $value['strMediaMid'] . '.mp3?guid=0&uin=0&fromtag=53';
                         $temp['url'] = $temp['url_128'];
                     }
                     if ($value['sizeogg'] != "0") {
-                        $temp['url_m4a'] = 'http://streamoc.music.tc.qq.com/C400' . $value['strMediaMid'] . '.m4a?guid=0&uin=0&fromtag=53';
+                        $temp['url_m4a'] = 'http://mobileoc.music.tc.qq.com/C400' . $value['strMediaMid'] . '.m4a?guid=0&uin=0&fromtag=53';
                         $temp['url'] = $temp['url_m4a'];
                     }
                     array_push($List['list'], $temp);
