@@ -1,7 +1,8 @@
+<?php if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
+    exit;
+}
+?>
 <?php
-/*
-全能音乐解析路由函数
- */
 define('MODULE_DIR', APP_PATH . 'Controller/');
 define('VIEW_DIR', APP_PATH . 'View/');
 $_DocumentPath = $_SERVER['DOCUMENT_ROOT'];
@@ -26,14 +27,17 @@ if (substr($_UrlPath, 0, 10) === "index.php/") {
 $ary_url = ['controller' => 'home', 'method' => 'index', 'pramers' => []];
 $ary_se = explode('/', $_UrlPath);
 $se_count = count($ary_se);
-//路由控制
 if ($se_count === 0 || $se_count === 1) {
     if ($_UrlPath !== '') {
         $ary_url['controller'] = basename($_UrlPath, ".php");
     }
+    if ($ary_url['controller'] === "index" && $ary_url['method'] === "index") {
+        $ary_url['controller'] = "home";
+        $ary_url['method'] = "index";
+    }
     $module_name = $ary_url['controller'];
     $module_file = VIEW_DIR . $module_name . '.php';
-} elseif ($se_count > 1) { //计算后面的参数，key-value
+} elseif ($se_count > 1) {
     $ary_url['controller'] = $ary_se[0] != '' ? $ary_se[0] : 'home';
     $ary_url['method'] = (isset($ary_se[1]) && $ary_se[1] != '') ? $ary_se[1] : 'index';
     if (isset($ary_se[2]) && $ary_se[2]) {
@@ -50,13 +54,14 @@ if ($se_count === 0 || $se_count === 1) {
             }
         }
     }
+
     $module_name = $ary_url['controller'];
     $module_file = MODULE_DIR . $module_name . '.php';
 }
 $method_name = $ary_url['method'];
 if (file_exists($module_file)) {
     require $module_file;
-    $obj_module = new $module_name(); //实例化模块m
+    $obj_module = new $module_name();
     if (!method_exists($obj_module, $method_name)) {
         send_http_status(404, TRUE);
         exit();
