@@ -4,8 +4,8 @@
 }
 ?>
 <?php
-class home {
+class favorite {
     public function index() {
-		include('Public/home.php');
+		include('Public/favorite.php');
     }
 }

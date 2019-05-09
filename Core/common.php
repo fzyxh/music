@@ -1,4 +1,5 @@
-<?php if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
+<?php if (!defined('APP_NAME')) {
+	header('HTTP/1.1 404 Not Found');
 	exit;
 }
 ?>
@@ -31,15 +32,14 @@ function f_count($array_or_countable, $mode = COUNT_NORMAL) {
 function curl_request($url, $post = '', $header = array('Expect: '), $cookie = '', $returnHeader = 0) {
 	$curl = curl_init();
 	curl_setopt($curl, CURLOPT_URL, $url);
-	curl_setopt($curl, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36');
-	curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
-	curl_setopt($curl, CURLOPT_AUTOREFERER, 1);
+	curl_setopt($curl, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36');
+	curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+	curl_setopt($curl, CURLOPT_AUTOREFERER, true);
 	curl_setopt($curl, CURLOPT_REFERER, 'https://y.qq.com/');
-	curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
-	curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
+	curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+	curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
 	curl_setopt($curl, CURLOPT_NOSIGNAL, 1);
 	curl_setopt($curl, CURLOPT_ENCODING, 'gzip');
-	curl_setopt($curl, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_0);
 	curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
 	curl_setopt($curl, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
 	if ($post) {
@@ -51,7 +51,8 @@ function curl_request($url, $post = '', $header = array('Expect: '), $cookie = '
 	}
 	curl_setopt($curl, CURLOPT_HEADER, $returnHeader);
 	curl_setopt($curl, CURLOPT_TIMEOUT, 30);
-	curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($curl, CURLOPT_FRESH_CONNECT, true);
 	$data = curl_exec($curl);
 	if (curl_errno($curl)) {
 		return curl_error($curl);
@@ -187,7 +188,7 @@ function redirect($url, $time = 0, $msg = '') {
  * @param boolean $adv 是否进行高级模式获取（有可能被伪装）
  * @return mixed
  */
-function get_client_ip($type = 0, $adv = false) {
+function get_client_ip($type = 0, $adv = true) {
 	$type = $type ? 1 : 0;
 	static $ip = NULL;
 	if ($ip !== NULL) {
@@ -216,13 +217,15 @@ function get_client_ip($type = 0, $adv = false) {
 	$ip = $long ? array($ip, $long) : array('0.0.0.0', 0);
 	return $ip[$type];
 }
+
 /**
  * 记录用户搜索词
  * @param string $word 搜索词
  * @return void
  */
 function logResult($word = '') {
-	/*$content = date("Y/m/d h:i:s")." ".get_client_ip()." ".$word."\r\n";
-		    $file = "./log/log.log";
-	*/
+	$content = date("Y/m/d h:i:s") . " " . get_client_ip() . " " . $word . "\r\n";
+	$file = "./log/log.log";
+	file_put_contents($file, chr(0xEF) . chr(0xBB) . chr(0xBF), FILE_APPEND);
+	file_put_contents($file, $content, FILE_APPEND);
 }

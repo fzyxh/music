@@ -1,4 +1,8 @@
-<?php if(basename($_SERVER['PHP_SELF']) === basename(__FILE__)) exit;?>
+<?php if (!defined('APP_NAME')) {
+    header('HTTP/1.1 404 Not Found');
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,10 +14,10 @@
   <link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/amazeui/2.7.2/css/amazeui.flat.min.css">
   <link rel="stylesheet" href="../css/public.css">
   <meta http-equiv="Cache-Control" content="no-siteapp">
-  <style>.title{font-size: 30px;margin: 20px 0 8px;}</style>
+  <style>.title{font-size: 30px;margin: 20px 0 8px;}.am-container img{max-width:100%;margin:10px 0;}</style>
 </head>
 <body>
-<?php $title='音乐解析';include '../header.php';?>
+<?php $title = '音乐解析';include '../header.php';?>
 <div class="am-container">
 	<div class="title" id="q1">解析示例</div>
 	<div class="am-panel am-panel-default">
@@ -39,6 +43,24 @@
 	  </div>
 	</div>
 	<div class="title" id="q2">常见问题</div>
+	<div class="am-panel am-panel-default" id="download-no-windows">
+	  <div class="am-panel-hd">下载没有弹出下载框？</div>
+	  <div class="am-panel-bd">
+		<p>QQ浏览器</p>
+		<img src="https://s2.ax1x.com/2019/04/25/EePn3T.jpg" />
+		<img src="https://s2.ax1x.com/2019/04/25/EePVNq.jpg" />
+		<img src="https://s2.ax1x.com/2019/04/25/EePQu4.jpg" />
+		<img src="https://s2.ax1x.com/2019/04/25/EePmCV.jpg" />
+		<img src="https://s2.ax1x.com/2019/04/25/EePZ40.jpg" />
+		<p>Google Chrome</p>
+		<img src="https://s2.ax1x.com/2019/04/25/EePKvF.jpg" />
+		<img src="https://s2.ax1x.com/2019/04/25/EePugU.jpg" />
+		<p>火狐</p>
+		<img src="https://s2.ax1x.com/2019/04/25/EeP8ER.jpg" />
+		<img src="https://s2.ax1x.com/2019/04/25/EeP1b9.jpg" />
+		<img src="https://s2.ax1x.com/2019/04/25/EePlDJ.jpg" />
+	  </div>
+	</div>
 	<div class="am-panel am-panel-default">
 	  <div class="am-panel-hd">没有搜索到我要的歌曲？</div>
 	  <div class="am-panel-bd">

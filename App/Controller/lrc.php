@@ -1,3 +1,8 @@
+<?php if (!defined('APP_NAME')) {
+    header('HTTP/1.1 404 Not Found');
+    exit;
+}
+?>
 <?php
 class lrc {
     public function get($param) {
@@ -39,10 +44,36 @@ class lrc {
                     } else {
                         $time = '[00:' . $val['time'] . ']';
                     }
-                    $lrc.= $time . $val['lineLyric'] . "\n";
+                    $lrc .= $time . $val['lineLyric'] . "\n";
                 }
                 $Lrcdata = $lrc;
             }
+        } elseif ($Type === 'xiami') {
+            require 'api/meting.php';
+            $api = new Meting('xiami');
+            $Lrcdata = $api->lyric($Mid);
+            $Lrcdata = json_decode($Lrcdata, true);
+            if (count($Lrcdata['data']['data']['lyrics'])) {
+                $data = $Lrcdata['data']['data']['lyrics'][0]['content'];
+                $data = preg_replace('/<[^>]+>/', '', $data);
+                preg_match_all('/\[([\d:\.]+)\](.*)\s\[x-trans\](.*)/i', $data, $match);
+                if (count($match[0])) {
+                    for ($i = 0; $i < count($match[0]); $i++) {
+                        $A[] = '[' . $match[1][$i] . ']' . $match[2][$i];
+                    }
+                    $Lrcdata = str_replace($match[0], $A, $data);
+                } else {
+                    $Lrcdata = $data;
+                }
+            } else {
+                $Lrcdata = '';
+            }
+        } elseif ($Type === 'baidu') {
+            require 'api/meting.php';
+            $api = new Meting('baidu');
+            $Lrcdata = $api->lyric($Mid);
+            $Lrcdata = json_decode($Lrcdata, true);
+            $Lrcdata = $Lrcdata['lrcContent'];
         }
         if ($Download === '1' && $Name) {
             header('Content-type:application/lrc');

@@ -1,4 +1,5 @@
-<?php if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
+<?php if (!defined('APP_NAME')) {
+    header('HTTP/1.1 404 Not Found');
     exit;
 }
 ?>
