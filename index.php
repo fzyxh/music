@@ -1,14 +1,23 @@
 <?php
 error_reporting(0);
 
-// $h = intval(date("H")); 
-// if($h > 24 || $h < 6){
-    // Header('HTTP/1.1 301 Moved Permanently');
-    // Header('Location: http://lab.liumingye.cn/music/');
-// }
+/*$h = intval(date("H"));
+if ($h > 24 || $h < 6) {
+    $the_host = $_SERVER['HTTP_HOST'];
+    $the_url = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
+    $the_url = strtolower($the_url);
+    header("Expires: -1");
+    header("Cache-Control: no_cache");
+    header("Pragma: no-cache");
+    header('HTTP/1.1 301 Moved Permanently');
+    header('Location: http://lab.liumingye.cn/api' . str_replace('music/', '', $the_url));
+    exit();
+}*/
 
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Max-Age: 604800');
+if (strpos($_SERVER['HTTP_ORIGIN'], 'liumingye.cn') !== false) {
+    header('Access-Control-Allow-Origin: '.$_SERVER['HTTP_ORIGIN']);
+    header('Access-Control-Max-Age: 604800');
+}
 
 ob_start();
 
