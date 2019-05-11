@@ -5,6 +5,28 @@
 ?>
 <?php
 class dl {
+    public function bili($param) {
+        require CORE_PATH . 'mcrypt.php';
+        $Id = $param['id'];
+        $Format = $param['format'];
+        if (Mcrypt::decode($param['token'], '2610382') != $param['id']) {
+            send_http_status(404, TRUE);
+            exit();
+        }
+        if($Format=="128"){
+            $quality=0;
+        }elseif($Format=="320"){
+            $quality=2;
+        }
+        $Data = curl_request('http://api.bilibili.com/audio/music-service-c/url?mid=0&mobi_app=iphone&platform=ios&privilege=2&quality='.$quality.'&songid='.$Id);
+        $Data = json_decode($Data, true);
+        header("Expires:-1");
+        header("Cache-Control:no_cache");
+        header("Pragma:no-cache");
+        Header('HTTP/1.1 301 Moved Permanently');
+        Header('Location:' . $Data['data']['cdns'][0]);
+        exit();
+    }
     public function kugou($param) {
         require CORE_PATH . 'mcrypt.php';
         $Id = $param['id'];
