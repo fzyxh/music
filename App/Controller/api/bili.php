@@ -13,8 +13,12 @@ class api {
         $List = ['list' => []];
         if (count($ListData) != 0) {
             foreach ($ListData as $key => $value) {
-                $temp['name'] = $value['title'];
-                $temp['artist'] = $value['writer'];
+                $temp['name'] = html_entity_decode($value['title'],ENT_QUOTES);
+                if ($value['writer'] !== "") {
+                    $temp['artist'] = html_entity_decode($value['writer'],ENT_QUOTES);
+                } else {
+                    $temp['artist'] = html_entity_decode($value['author'],ENT_QUOTES);
+                }
                 $temp['cover'] = $value['cover'];
                 $noUrl = true;
                 foreach ($value['play_url_list'] as $val) {
