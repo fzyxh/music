@@ -30,7 +30,8 @@ class lrc {
         } elseif ($Type === 'kugou') {
             $Lrcdata = curl_request('http://m.kugou.com/app/i/krc.php?cmd=100&timelength=999999&hash=' . $Mid);
         } elseif ($Type === 'kuwo') {
-            $Lrcdata = curl_request('http://m.kuwo.cn/newh5/singles/songinfoandlrc?musicId=' . $Mid);
+            $Lrcdata = curl_request('https://api.itooi.cn/music/kuwo/lrc?key=579621905&id=' . $Mid);
+            /*$Lrcdata = curl_request('http://m.kuwo.cn/newh5/singles/songinfoandlrc?musicId=' . $Mid, null, array('X-FORWARDED-FOR:112.98.92.45','CLIENT-IP:112.98.92.45'));
             $Lrcdata = json_decode($Lrcdata, true);
             $Lrcdata = $Lrcdata['data']['lrclist'];
             if ($Lrcdata) {
@@ -47,7 +48,7 @@ class lrc {
                     $lrc .= $time . $val['lineLyric'] . "\n";
                 }
                 $Lrcdata = $lrc;
-            }
+            }*/
         } elseif ($Type === 'xiami') {
             require 'api/meting.php';
             $api = new Meting('xiami');
@@ -74,6 +75,15 @@ class lrc {
             $Lrcdata = $api->lyric($Mid);
             $Lrcdata = json_decode($Lrcdata, true);
             $Lrcdata = $Lrcdata['lrcContent'];
+        } elseif ($Type === 'bili') {
+            $Data = curl_request('https://www.bilibili.com/audio/music-service-c/web/song/info?sid=' . $Mid);
+            $Data = json_decode($Data, true);
+            if($Data['data']['lyric']!=""){
+                Header('HTTP/1.1 301 Moved Permanently');
+                Header('Location:' . $Data['data']['lyric']);
+            }else{
+                $Lrcdata = '[00:00.00]暂无歌词';
+            }
         }
         if ($Download === '1' && $Name) {
             header('Content-type:application/lrc');
