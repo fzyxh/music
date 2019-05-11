@@ -6,22 +6,16 @@
 <?php
 class ajax {
     public function search($param) {
-
         if (isset($_SERVER['REQUEST_METHOD']) && !strcasecmp($_SERVER['REQUEST_METHOD'], 'POST')) {
-            if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-                
-            } else {
-                exit();
-            }
+            
         } else {
             exit();
         }
-
         $Token = $param['token'];
         $Text = $param['text'];
         $Page = $param['page'];
         $Type = $param['type'];
-        if ($Token !== md5('text/' . $Text . '/page/' . $Page . '/type/' . $Type . 'key')) {
+        if ($Token !== md5('text/' . $Text . '/page/' . $Page . '/type/' . $Type . '<WC7X5YZxq')) {
             send_http_status(403, TRUE);
             exit();
         }
@@ -133,6 +127,10 @@ class ajax {
                 $api = new api;
                 $List = $api->SearchList($Text, $Page);
             } elseif ($Type === 'kugou') {
+                require MODULE_DIR . "api/" . $Type . ".php";
+                $api = new api;
+                $List = $api->SearchList($Text, $Page);
+            } elseif ($Type === 'bili') {
                 require MODULE_DIR . "api/" . $Type . ".php";
                 $api = new api;
                 $List = $api->SearchList($Text, $Page);
