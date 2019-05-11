@@ -193,6 +193,7 @@ Mp3Juices 替代<br>
 			</div>
 		</div>
 	</div>
+	<script>var _hmt=_hmt||[];!function(){var b,a=document.createElement("script");a.src="//hm.baidu.com/hm.js?c7fa9b4e62f83653d8d7d694f80aadfd",b=document.getElementsByTagName("script")[0],b.parentNode.insertBefore(a,b)}();</script>
 	<script src="<?php echo SITE_URL; ?>Public/js/localstorage.js?v=<?php echo APP_VERSION; ?>"></script>
 </body>
 </html>
