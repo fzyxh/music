@@ -53,6 +53,7 @@
 					<option value="netease">网易云</option>
 					<option value="xiami">虾米</option>
 					<option value="baidu">百度</option>
+					<option value="bili">哔哩哔哩</option>
 					<!-- <option value="1ting">一听</option> -->
 					<!-- <option value="migu">咪咕</option> -->
 					<!-- <option value="lizhi">荔枝</option> -->
